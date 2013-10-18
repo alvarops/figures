@@ -38,7 +38,10 @@ public class Main {
 			str = br.readLine();
 			int size = Integer.parseInt(str);
 			str = br.readLine();
-			System.out.println(new Main(size).countStrokes());
+			Main main = new Main(size);
+			main.addPoints(str);
+				
+			System.out.println(main.countStrokes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -73,7 +76,8 @@ public class Main {
 		if (prev == curr 
 				|| prev == N && curr == W
 				|| prev == W && curr == N
-				|| prev == S && curr == E) {
+				|| prev == S && curr == E
+				|| prev == E && curr == S) {
 			if (pends.containsKey(current.pend)) {
 				pends.get(current.pend).add(current);
 			} else {
@@ -113,7 +117,7 @@ public class Main {
 	public int countStrokes() {
 		int total = 0;
 		for(ArrayList<Point> array:pends.values()) {
-			Collections.sort(array, currPosition);
+			//Collections.sort(array, currPosition);
 			final double size = Math.floor(array.size()/2);
 			total += size;
 		}

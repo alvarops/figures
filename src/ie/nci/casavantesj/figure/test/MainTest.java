@@ -55,10 +55,10 @@ public class MainTest {
 		Main main = new Main(test.length());
 		main.addPoints(test);
 		ArrayList<Point> points = main.getPoints();
-		System.out.println(points);
+//		System.out.println(points);
 		//main.cleanupPends();
-		System.out.println(main.pends.size());
-		System.out.println(main.pends.values());
+//		System.out.println(main.pends.size());
+//		System.out.println(main.pends.values());
 		int result = main.countStrokes();
 		assertTrue("Unexpected result: " + result, result == 15);
 	}
