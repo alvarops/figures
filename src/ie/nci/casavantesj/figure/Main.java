@@ -1,5 +1,8 @@
 package ie.nci.casavantesj.figure;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -29,7 +32,16 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str;
+		try {
+			str = br.readLine();
+			int size = Integer.parseInt(str);
+			str = br.readLine();
+			System.out.println(new Main(size).countStrokes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Point addPoint(char c) {
@@ -102,9 +114,7 @@ public class Main {
 		int total = 0;
 		for(ArrayList<Point> array:pends.values()) {
 			Collections.sort(array, currPosition);
-			
 			final double size = Math.floor(array.size()/2);
-			System.out.println("array :" + array + ": " + size);
 			total += size;
 		}
 		return total;
